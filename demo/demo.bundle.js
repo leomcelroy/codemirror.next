@@ -15923,12 +15923,13 @@
   var cmdD = {key: "Mod-d", run: selectNextOccurrence, preventDefault: true};
   var km = keymap.of([
     ...closeBracketsKeymap,
+    ...defaultKeymap,
     ...historyKeymap,
     ...commentKeymap,
     tabBinding,
     cmdD
   ]);
-  var basicSetup = [
+  var setup = [
     lineNumbers(),
     highlightSpecialChars(),
     history(),
@@ -15947,16 +15948,18 @@
   var CodeMirror = class extends HTMLElement {
     constructor() {
       super();
+      this.state = void 0;
+      this.view = void 0;
       this.state = EditorState.create({
-        doc: `() => console.log("test")`,
+        doc: ``,
         extensions: [
-          basicSetup,
+          setup,
           javascript()
         ]
       });
     }
     connectedCallback() {
-      new EditorView({state: this.state, parent: this});
+      this.view = new EditorView({state: this.state, parent: this});
     }
   };
   window.customElements.define("code-mirror", CodeMirror);

@@ -13,13 +13,16 @@ import { commentKeymap } from "@codemirror/comment"
 import { rectangularSelection } from "@codemirror/rectangular-selection"
 import { defaultHighlightStyle } from "@codemirror/highlight"
 
+import { defaultKeymap } from "@codemirror/commands"
+// import { basicSetup } from "@codemirror/basic-setup"
+
 
 const tabBinding = {key: "Tab", run: indentMore, shift: indentLess}
 const cmdD = { key: "Mod-d", run: selectNextOccurrence, preventDefault: true }
 
 const km = keymap.of([
 	...closeBracketsKeymap,
-	// ...defaultKeymap,
+	...defaultKeymap,
 	// ...searchKeymap,
 	...historyKeymap,
 	...commentKeymap,
@@ -27,7 +30,7 @@ const km = keymap.of([
 	cmdD
 ])
 
-const basicSetup: Extension = [
+const setup: Extension = [
   lineNumbers(),
   highlightSpecialChars(),
   history(),
@@ -45,7 +48,8 @@ const basicSetup: Extension = [
 ]
 
 class CodeMirror extends HTMLElement {
-	state;
+	state: any = undefined;
+	view: any = undefined;
 
 	constructor() {
 		super();
@@ -54,9 +58,9 @@ class CodeMirror extends HTMLElement {
 		// this.attachShadow({ mode: "open" });
 
 		this.state = EditorState.create({ 
-			doc: `() => console.log("test")`, 
+			doc: ``, 
 			extensions: [
-		        basicSetup,
+		        setup, // setup
 		        javascript(),
 			]
 		});
@@ -64,7 +68,7 @@ class CodeMirror extends HTMLElement {
 
 	// lifecycle
 	connectedCallback() { 
-		new EditorView({ state: this.state, parent: this });
+		this.view = new EditorView({ state: this.state, parent: this });
 	}
 
 }
