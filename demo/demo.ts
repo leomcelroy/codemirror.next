@@ -1,5 +1,6 @@
 import { indentMore, indentLess } from "@codemirror/commands";
-import { javascript } from "@codemirror/lang-javascript";
+import { html } from "@codemirror/lang-html";
+// import { javascript } from "@codemirror/lang-javascript";
 import { EditorView, keymap, highlightSpecialChars, drawSelection, highlightActiveLine } from "@codemirror/view"
 import { Extension, EditorState } from "@codemirror/state"
 import { history, historyKeymap } from "@codemirror/history"
@@ -12,7 +13,6 @@ import { highlightSelectionMatches, selectNextOccurrence } from "@codemirror/sea
 import { commentKeymap } from "@codemirror/comment"
 import { rectangularSelection } from "@codemirror/rectangular-selection"
 import { defaultHighlightStyle } from "@codemirror/highlight"
-
 import { defaultKeymap } from "@codemirror/commands"
 // import { basicSetup } from "@codemirror/basic-setup"
 
@@ -65,7 +65,7 @@ class CodeMirror extends HTMLElement {
 			doc: ``, 
 			extensions: [
 		        setup, // setup
-		        javascript(),
+		        html(),
 			]
 		});
 	
