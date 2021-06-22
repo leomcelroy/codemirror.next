@@ -3,7 +3,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { EditorView, keymap, highlightSpecialChars, drawSelection, highlightActiveLine } from "@codemirror/view"
 import { Extension, EditorState } from "@codemirror/state"
 import { history, historyKeymap } from "@codemirror/history"
-import { foldGutter } from "@codemirror/fold"
+import { foldGutter, foldRange } from "@codemirror/fold"
 import { indentOnInput } from "@codemirror/language"
 import { lineNumbers } from "@codemirror/gutter"
 import { bracketMatching } from "@codemirror/matchbrackets"
@@ -35,6 +35,7 @@ const setup: Extension = [
   highlightSpecialChars(),
   history(),
   foldGutter(),
+  // foldCode(),
   drawSelection(),
   EditorState.allowMultipleSelections.of(true),
   indentOnInput(),
@@ -50,25 +51,26 @@ const setup: Extension = [
 class CodeMirror extends HTMLElement {
 	state: any = undefined;
 	view: any = undefined;
+	foldRange: any = undefined;
 
 	constructor() {
 		super();
 
 		// properties
 		// this.attachShadow({ mode: "open" });
-
-		this.state = EditorState.create({ 
+	}
+	// lifecycle
+	connectedCallback() { 
+		const initState = EditorState.create({ 
 			doc: ``, 
 			extensions: [
 		        setup, // setup
 		        javascript(),
 			]
 		});
-	}
-
-	// lifecycle
-	connectedCallback() { 
-		this.view = new EditorView({ state: this.state, parent: this });
+	
+		this.view = new EditorView({ state: initState, parent: this });
+		this.foldRange = foldRange(this.view);
 	}
 
 }

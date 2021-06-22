@@ -7633,7 +7633,7 @@
   EditorView.decorations = decorations;
   EditorView.contentAttributes = contentAttributes;
   EditorView.editorAttributes = editorAttributes;
-  EditorView.lineWrapping = _EditorView.contentAttributes.of({class: "cm-lineWrapping"});
+  EditorView.lineWrapping = _EditorView.contentAttributes.of({"class": "cm-lineWrapping"});
   EditorView.announce = StateEffect.define();
   var MaxBidiLine = 4096;
   function ensureTop(given, dom) {
@@ -11852,7 +11852,7 @@
     repeatNodeCount: 27,
     tokenData: "!Ck~R!ZOX$tX^%S^p$tpq%Sqr&rrs'zst$ttu/wuv2Xvw2|wx3zxy:byz:rz{;S{|<S|}<g}!O<S!O!P<w!P!QAT!Q!R!0Z!R![!2j![!]!8Y!]!^!8l!^!_!8|!_!`!9y!`!a!;U!a!b!<{!b!c$t!c!}/w!}#O!>^#O#P$t#P#Q!>n#Q#R!?O#R#S/w#S#T!?c#T#o/w#o#p!?s#p#q!?x#q#r!@`#r#s!@r#s#y$t#y#z%S#z$f$t$f$g%S$g#BY/w#BY#BZ!AS#BZ$IS/w$IS$I_!AS$I_$I|/w$I|$JO!AS$JO$JT/w$JT$JU!AS$JU$KV/w$KV$KW!AS$KW&FU/w&FU&FV!AS&FV~/wW$yR#zWO!^$t!_#o$t#p~$t,T%Zg#zW&}+{OX$tX^%S^p$tpq%Sq!^$t!_#o$t#p#y$t#y#z%S#z$f$t$f$g%S$g#BY$t#BY#BZ%S#BZ$IS$t$IS$I_%S$I_$I|$t$I|$JO%S$JO$JT$t$JT$JU%S$JU$KV$t$KV$KW%S$KW&FU$t&FU&FV%S&FV~$t$T&yS#zW!e#{O!^$t!_!`'V!`#o$t#p~$t$O'^S#Z#v#zWO!^$t!_!`'j!`#o$t#p~$t$O'qR#Z#v#zWO!^$t!_#o$t#p~$t'u(RZ#zW]!ROY'zYZ(tZr'zrs*Rs!^'z!^!_*e!_#O'z#O#P,q#P#o'z#o#p*e#p~'z&r(yV#zWOr(trs)`s!^(t!^!_)p!_#o(t#o#p)p#p~(t&r)gR#u&j#zWO!^$t!_#o$t#p~$t&j)sROr)prs)|s~)p&j*RO#u&j'u*[R#u&j#zW]!RO!^$t!_#o$t#p~$t'm*jV]!ROY*eYZ)pZr*ers+Ps#O*e#O#P+W#P~*e'm+WO#u&j]!R'm+ZROr*ers+ds~*e'm+kU#u&j]!ROY+}Zr+}rs,fs#O+}#O#P,k#P~+}!R,SU]!ROY+}Zr+}rs,fs#O+}#O#P,k#P~+}!R,kO]!R!R,nPO~+}'u,vV#zWOr'zrs-]s!^'z!^!_*e!_#o'z#o#p*e#p~'z'u-fZ#u&j#zW]!ROY.XYZ$tZr.Xrs/Rs!^.X!^!_+}!_#O.X#O#P/c#P#o.X#o#p+}#p~.X!Z.`Z#zW]!ROY.XYZ$tZr.Xrs/Rs!^.X!^!_+}!_#O.X#O#P/c#P#o.X#o#p+}#p~.X!Z/YR#zW]!RO!^$t!_#o$t#p~$t!Z/hT#zWO!^.X!^!_+}!_#o.X#o#p+}#p~.X&i0S_#zW#pS'Yp'P%kOt$ttu/wu}$t}!O1R!O!Q$t!Q![/w![!^$t!_!c$t!c!}/w!}#R$t#R#S/w#S#T$t#T#o/w#p$g$t$g~/w[1Y_#zW#pSOt$ttu1Ru}$t}!O1R!O!Q$t!Q![1R![!^$t!_!c$t!c!}1R!}#R$t#R#S1R#S#T$t#T#o1R#p$g$t$g~1R$O2`S#T#v#zWO!^$t!_!`2l!`#o$t#p~$t$O2sR#zW#e#vO!^$t!_#o$t#p~$t%r3TU'm%j#zWOv$tvw3gw!^$t!_!`2l!`#o$t#p~$t$O3nS#zW#_#vO!^$t!_!`2l!`#o$t#p~$t'u4RZ#zW]!ROY3zYZ4tZw3zwx*Rx!^3z!^!_5l!_#O3z#O#P7l#P#o3z#o#p5l#p~3z&r4yV#zWOw4twx)`x!^4t!^!_5`!_#o4t#o#p5`#p~4t&j5cROw5`wx)|x~5`'m5qV]!ROY5lYZ5`Zw5lwx+Px#O5l#O#P6W#P~5l'm6ZROw5lwx6dx~5l'm6kU#u&j]!ROY6}Zw6}wx,fx#O6}#O#P7f#P~6}!R7SU]!ROY6}Zw6}wx,fx#O6}#O#P7f#P~6}!R7iPO~6}'u7qV#zWOw3zwx8Wx!^3z!^!_5l!_#o3z#o#p5l#p~3z'u8aZ#u&j#zW]!ROY9SYZ$tZw9Swx/Rx!^9S!^!_6}!_#O9S#O#P9|#P#o9S#o#p6}#p~9S!Z9ZZ#zW]!ROY9SYZ$tZw9Swx/Rx!^9S!^!_6}!_#O9S#O#P9|#P#o9S#o#p6}#p~9S!Z:RT#zWO!^9S!^!_6}!_#o9S#o#p6}#p~9S%V:iR!_$}#zWO!^$t!_#o$t#p~$tZ:yR!^R#zWO!^$t!_#o$t#p~$t%R;]U'Q!R#U#v#zWOz$tz{;o{!^$t!_!`2l!`#o$t#p~$t$O;vS#R#v#zWO!^$t!_!`2l!`#o$t#p~$t$u<ZSi$m#zWO!^$t!_!`2l!`#o$t#p~$t&i<nR|&a#zWO!^$t!_#o$t#p~$t&i=OVq%n#zWO!O$t!O!P=e!P!Q$t!Q![>Z![!^$t!_#o$t#p~$ty=jT#zWO!O$t!O!P=y!P!^$t!_#o$t#p~$ty>QR{q#zWO!^$t!_#o$t#p~$ty>bZ#zWjqO!Q$t!Q![>Z![!^$t!_!g$t!g!h?T!h#R$t#R#S>Z#S#X$t#X#Y?T#Y#o$t#p~$ty?YZ#zWO{$t{|?{|}$t}!O?{!O!Q$t!Q![@g![!^$t!_#R$t#R#S@g#S#o$t#p~$ty@QV#zWO!Q$t!Q![@g![!^$t!_#R$t#R#S@g#S#o$t#p~$ty@nV#zWjqO!Q$t!Q![@g![!^$t!_#R$t#R#S@g#S#o$t#p~$t,TA[`#zW#S#vOYB^YZ$tZzB^z{HT{!PB^!P!Q!*|!Q!^B^!^!_Da!_!`!+u!`!a!,t!a!}B^!}#O!-s#O#P!/o#P#oB^#o#pDa#p~B^XBe[#zWxPOYB^YZ$tZ!PB^!P!QCZ!Q!^B^!^!_Da!_!}B^!}#OFY#O#PGi#P#oB^#o#pDa#p~B^XCb_#zWxPO!^$t!_#Z$t#Z#[CZ#[#]$t#]#^CZ#^#a$t#a#bCZ#b#g$t#g#hCZ#h#i$t#i#jCZ#j#m$t#m#nCZ#n#o$t#p~$tPDfVxPOYDaZ!PDa!P!QD{!Q!}Da!}#OEd#O#PFP#P~DaPEQUxP#Z#[D{#]#^D{#a#bD{#g#hD{#i#jD{#m#nD{PEgTOYEdZ#OEd#O#PEv#P#QDa#Q~EdPEyQOYEdZ~EdPFSQOYDaZ~DaXF_Y#zWOYFYYZ$tZ!^FY!^!_Ed!_#OFY#O#PF}#P#QB^#Q#oFY#o#pEd#p~FYXGSV#zWOYFYYZ$tZ!^FY!^!_Ed!_#oFY#o#pEd#p~FYXGnV#zWOYB^YZ$tZ!^B^!^!_Da!_#oB^#o#pDa#p~B^,TH[^#zWxPOYHTYZIWZzHTz{Ki{!PHT!P!Q!)j!Q!^HT!^!_Mt!_!}HT!}#O!%e#O#P!(x#P#oHT#o#pMt#p~HT,TI]V#zWOzIWz{Ir{!^IW!^!_Jt!_#oIW#o#pJt#p~IW,TIwX#zWOzIWz{Ir{!PIW!P!QJd!Q!^IW!^!_Jt!_#oIW#o#pJt#p~IW,TJkR#zWT+{O!^$t!_#o$t#p~$t+{JwROzJtz{KQ{~Jt+{KTTOzJtz{KQ{!PJt!P!QKd!Q~Jt+{KiOT+{,TKp^#zWxPOYHTYZIWZzHTz{Ki{!PHT!P!QLl!Q!^HT!^!_Mt!_!}HT!}#O!%e#O#P!(x#P#oHT#o#pMt#p~HT,TLu_#zWT+{xPO!^$t!_#Z$t#Z#[CZ#[#]$t#]#^CZ#^#a$t#a#bCZ#b#g$t#g#hCZ#h#i$t#i#jCZ#j#m$t#m#nCZ#n#o$t#p~$t+{MyYxPOYMtYZJtZzMtz{Ni{!PMt!P!Q!$a!Q!}Mt!}#O! w#O#P!#}#P~Mt+{NnYxPOYMtYZJtZzMtz{Ni{!PMt!P!Q! ^!Q!}Mt!}#O! w#O#P!#}#P~Mt+{! eUT+{xP#Z#[D{#]#^D{#a#bD{#g#hD{#i#jD{#m#nD{+{! zWOY! wYZJtZz! wz{!!d{#O! w#O#P!#k#P#QMt#Q~! w+{!!gYOY! wYZJtZz! wz{!!d{!P! w!P!Q!#V!Q#O! w#O#P!#k#P#QMt#Q~! w+{!#[TT+{OYEdZ#OEd#O#PEv#P#QDa#Q~Ed+{!#nTOY! wYZJtZz! wz{!!d{~! w+{!$QTOYMtYZJtZzMtz{Ni{~Mt+{!$f_xPOzJtz{KQ{#ZJt#Z#[!$a#[#]Jt#]#^!$a#^#aJt#a#b!$a#b#gJt#g#h!$a#h#iJt#i#j!$a#j#mJt#m#n!$a#n~Jt,T!%j[#zWOY!%eYZIWZz!%ez{!&`{!^!%e!^!_! w!_#O!%e#O#P!(W#P#QHT#Q#o!%e#o#p! w#p~!%e,T!&e^#zWOY!%eYZIWZz!%ez{!&`{!P!%e!P!Q!'a!Q!^!%e!^!_! w!_#O!%e#O#P!(W#P#QHT#Q#o!%e#o#p! w#p~!%e,T!'hY#zWT+{OYFYYZ$tZ!^FY!^!_Ed!_#OFY#O#PF}#P#QB^#Q#oFY#o#pEd#p~FY,T!(]X#zWOY!%eYZIWZz!%ez{!&`{!^!%e!^!_! w!_#o!%e#o#p! w#p~!%e,T!(}X#zWOYHTYZIWZzHTz{Ki{!^HT!^!_Mt!_#oHT#o#pMt#p~HT,T!)qc#zWxPOzIWz{Ir{!^IW!^!_Jt!_#ZIW#Z#[!)j#[#]IW#]#^!)j#^#aIW#a#b!)j#b#gIW#g#h!)j#h#iIW#i#j!)j#j#mIW#m#n!)j#n#oIW#o#pJt#p~IW,T!+TV#zWS+{OY!*|YZ$tZ!^!*|!^!_!+j!_#o!*|#o#p!+j#p~!*|+{!+oQS+{OY!+jZ~!+j$P!,O[#zW#e#vxPOYB^YZ$tZ!PB^!P!QCZ!Q!^B^!^!_Da!_!}B^!}#OFY#O#PGi#P#oB^#o#pDa#p~B^]!,}[#mS#zWxPOYB^YZ$tZ!PB^!P!QCZ!Q!^B^!^!_Da!_!}B^!}#OFY#O#PGi#P#oB^#o#pDa#p~B^X!-xY#zWOY!-sYZ$tZ!^!-s!^!_!.h!_#O!-s#O#P!/T#P#QB^#Q#o!-s#o#p!.h#p~!-sP!.kTOY!.hZ#O!.h#O#P!.z#P#QDa#Q~!.hP!.}QOY!.hZ~!.hX!/YV#zWOY!-sYZ$tZ!^!-s!^!_!.h!_#o!-s#o#p!.h#p~!-sX!/tV#zWOYB^YZ$tZ!^B^!^!_Da!_#oB^#o#pDa#p~B^y!0bd#zWjqO!O$t!O!P!1p!P!Q$t!Q![!2j![!^$t!_!g$t!g!h?T!h#R$t#R#S!2j#S#U$t#U#V!4Q#V#X$t#X#Y?T#Y#b$t#b#c!3p#c#d!5`#d#l$t#l#m!6h#m#o$t#p~$ty!1wZ#zWjqO!Q$t!Q![!1p![!^$t!_!g$t!g!h?T!h#R$t#R#S!1p#S#X$t#X#Y?T#Y#o$t#p~$ty!2q_#zWjqO!O$t!O!P!1p!P!Q$t!Q![!2j![!^$t!_!g$t!g!h?T!h#R$t#R#S!2j#S#X$t#X#Y?T#Y#b$t#b#c!3p#c#o$t#p~$ty!3wR#zWjqO!^$t!_#o$t#p~$ty!4VW#zWO!Q$t!Q!R!4o!R!S!4o!S!^$t!_#R$t#R#S!4o#S#o$t#p~$ty!4vW#zWjqO!Q$t!Q!R!4o!R!S!4o!S!^$t!_#R$t#R#S!4o#S#o$t#p~$ty!5eV#zWO!Q$t!Q!Y!5z!Y!^$t!_#R$t#R#S!5z#S#o$t#p~$ty!6RV#zWjqO!Q$t!Q!Y!5z!Y!^$t!_#R$t#R#S!5z#S#o$t#p~$ty!6mZ#zWO!Q$t!Q![!7`![!^$t!_!c$t!c!i!7`!i#R$t#R#S!7`#S#T$t#T#Z!7`#Z#o$t#p~$ty!7gZ#zWjqO!Q$t!Q![!7`![!^$t!_!c$t!c!i!7`!i#R$t#R#S!7`#S#T$t#T#Z!7`#Z#o$t#p~$t%w!8cR!WV#zW#c%hO!^$t!_#o$t#p~$t!P!8sR^w#zWO!^$t!_#o$t#p~$t+c!9XR'Ud![%Y#n&s'qP!P!Q!9b!^!_!9g!_!`!9tW!9gO#|W#v!9lP#V#v!_!`!9o#v!9tO#e#v#v!9yO#W#v%w!:QT!t%o#zWO!^$t!_!`!:a!`!a!:t!a#o$t#p~$t$O!:hS#Z#v#zWO!^$t!_!`'j!`#o$t#p~$t$P!:{R#O#w#zWO!^$t!_#o$t#p~$t%w!;aT'T!s#W#v#wS#zWO!^$t!_!`!;p!`!a!<Q!a#o$t#p~$t$O!;wR#W#v#zWO!^$t!_#o$t#p~$t$O!<XT#V#v#zWO!^$t!_!`2l!`!a!<h!a#o$t#p~$t$O!<oS#V#v#zWO!^$t!_!`2l!`#o$t#p~$t%w!=SV'e%o#zWO!O$t!O!P!=i!P!^$t!_!a$t!a!b!=y!b#o$t#p~$t$`!=pRr$W#zWO!^$t!_#o$t#p~$t$O!>QS#zW#`#vO!^$t!_!`2l!`#o$t#p~$t&e!>eRt&]#zWO!^$t!_#o$t#p~$tZ!>uRyR#zWO!^$t!_#o$t#p~$t$O!?VS#]#v#zWO!^$t!_!`2l!`#o$t#p~$t$P!?jR#zW']#wO!^$t!_#o$t#p~$t~!?xO!O~%r!@PT'l%j#zWO!^$t!_!`2l!`#o$t#p#q!=y#q~$t$u!@iR}$k#zW'_QO!^$t!_#o$t#p~$tX!@yR!fP#zWO!^$t!_#o$t#p~$t,T!Aar#zW#pS'Yp'P%k&}+{OX$tX^%S^p$tpq%Sqt$ttu/wu}$t}!O1R!O!Q$t!Q![/w![!^$t!_!c$t!c!}/w!}#R$t#R#S/w#S#T$t#T#o/w#p#y$t#y#z%S#z$f$t$f$g%S$g#BY/w#BY#BZ!AS#BZ$IS/w$IS$I_!AS$I_$I|/w$I|$JO!AS$JO$JT/w$JT$JU!AS$JU$KV/w$KV$KW!AS$KW&FU/w&FU&FV!AS&FV~/w",
     tokenizers: [noSemicolon, incdecToken, template, 0, 1, 2, 3, 4, 5, 6, 7, 8, insertSemicolon],
-    topRules: {Script: [0, 6]},
+    topRules: {"Script": [0, 6]},
     dialects: {jsx: 12773, ts: 12775},
     dynamicPrecedences: {"139": 1, "166": 1},
     specialized: [{term: 277, get: (value, stack) => tsExtends(value, stack) << 1 | 1}, {term: 277, get: (value) => spec_identifier[value] || -1}, {term: 286, get: (value) => spec_word[value] || -1}, {term: 58, get: (value) => spec_LessThan[value] || -1}],
@@ -14407,6 +14407,21 @@
     });
     return found;
   }
+  function maybeEnable(state, other) {
+    return state.field(foldState, false) ? other : other.concat(StateEffect.appendConfig.of(codeFolding()));
+  }
+  var foldRange = (view) => (from, to) => {
+    let {state} = view, effects = [];
+    for (let pos = from; pos < to; ) {
+      let line = view.visualLineAt(pos), range = foldable(state, line.from, line.to);
+      if (range)
+        effects.push(foldEffect.of(range));
+      pos = (range ? view.visualLineAt(range.to) : line).to + 1;
+    }
+    if (effects.length)
+      view.dispatch({effects: maybeEnable(view.state, effects)});
+    return !!effects.length;
+  };
   var defaultConfig = {
     placeholderDOM: null,
     placeholderText: "\u2026"
@@ -15717,7 +15732,6 @@
       return true;
     };
   }
-
   var CommentOption;
   (function(CommentOption2) {
     CommentOption2[CommentOption2["Toggle"] = 0] = "Toggle";
@@ -15950,16 +15964,18 @@
       super();
       this.state = void 0;
       this.view = void 0;
-      this.state = EditorState.create({
+      this.foldRange = void 0;
+    }
+    connectedCallback() {
+      const initState = EditorState.create({
         doc: ``,
         extensions: [
           setup,
           javascript()
         ]
       });
-    }
-    connectedCallback() {
-      this.view = new EditorView({state: this.state, parent: this});
+      this.view = new EditorView({state: initState, parent: this});
+      this.foldRange = foldRange(this.view);
     }
   };
   window.customElements.define("code-mirror", CodeMirror);
