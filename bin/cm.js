@@ -27,6 +27,7 @@ function start() {
     push,
     grep,
     "build-readme": buildReadme,
+    test,
     run: runCmd,
     "--help": () => help(0)
   }[command]
@@ -48,6 +49,7 @@ function help(status) {
   cm commit <args>        Run git commit in all packages that have changes
   cm push                 Run git push in packages that have new commits
   cm run <command>        Run the given command in each of the package dirs
+  cm test [--no-browser]  Run the test suite of all the packages
   cm grep <pattern>       Grep through the source code for all packages
   cm --help`)
   process.exit(status)
@@ -58,8 +60,8 @@ function error(err) {
   process.exit(1)
 }
 
-function run(cmd, args, wd = root) {
-  return child.execFileSync(cmd, args, {cwd: wd, encoding: "utf8", stdio: ["ignore", "pipe", process.stderr]})
+function run(cmd, args, wd = root, { shell = false } = {}) {
+  return child.execFileSync(cmd, args, {shell, cwd: wd, encoding: "utf8", stdio: ["ignore", "pipe", process.stderr]})
 }
 
 function replace(file, f) {
@@ -88,8 +90,8 @@ function install(arg = null) {
     }
   }
 
-  console.log("Running yarn install")
-  run("yarn", ["install"])
+  console.log("Running npm install")
+  run("npm", ["install"], root, {shell: process.platform == "win32"})
   console.log("Building modules")
   ;({packages, packageNames, buildPackages} = loadPackages())
   build()
@@ -120,10 +122,17 @@ function startServer() {
   let moduleserver = new (require("esmoduleserve/moduleserver"))({root: serve, maxDepth: 2})
   let serveStatic = require("serve-static")(serve)
   require("http").createServer((req, resp) => {
-    moduleserver.handleRequest(req, resp) || serveStatic(req, resp, _err => {
-      resp.statusCode = 404
-      resp.end('Not found')
-    })
+    if (/^\/test\/?($|\?)/.test(req.url)) {
+      let runTests = require("@codemirror/buildhelper/src/runtests")
+      let {browserTests} = runTests.gatherTests(buildPackages.map(p => p.dir))
+      resp.writeHead(200, {"content-type": "text/html"})
+      resp.end(runTests.testHTML(browserTests.map(f => path.relative(serve, f)), false))
+    } else {
+      moduleserver.handleRequest(req, resp) || serveStatic(req, resp, _err => {
+        resp.statusCode = 404
+        resp.end('Not found')
+      })
+    }
   }).listen(8090, process.env.OPEN ? undefined : "127.0.0.1")
   console.log("Dev server listening on 8090")
 }
@@ -193,7 +202,9 @@ function updateDependencyVersion(pkg, version) {
 function updateAllDependencyVersions(version) {
   for (let pkg of packages) {
     let pkgFile = join(pkg.dir, "package.json"), text = fs.readFileSync(pkgFile, "utf8")
-    let updated = text.replace(/("@codemirror\/[^"]+": ")([^"]+)"/g, (_, m) => m + "^" + version + '"')
+    let updated = text.replace(/("@codemirror\/[^"]+": ")([^"]+)"/g, (_, m, old) => {
+      return m + (/buildhelper/.test(m) ? old : "^" + version) + '"'
+    })
     fs.writeFileSync(pkgFile, updated)
   }
 }
@@ -201,6 +212,8 @@ function updateAllDependencyVersions(version) {
 function version(pkg) {
   return require(join(pkg.dir, "package.json")).version
 }
+
+const mainVersion = /^0.\d+|\d+/
 
 function release(...args) {
   let setVersion, edit = false, pkgName, pkg
@@ -215,7 +228,7 @@ function release(...args) {
 
   let {changes, newVersion} = doRelease(pkg, setVersion, {edit})
 
-  if (changes.breaking.length) {
+  if (mainVersion.exec(newVersion)[0] != mainVersion.exec(version(pkg))[0]) {
     let updated = updateDependencyVersion(pkg, newVersion)
     if (updated.length) console.log(`Updated dependencies in ${updated.map(p => p.name).join(", ")}`)
   }
@@ -324,6 +337,20 @@ function buildReadme(name) {
   if (!nonCore.includes(name)) help(1)
   let pkg = packageNames[name]
   fs.writeFileSync(join(pkg.dir, "README.md"), require("./build-readme").buildReadme(pkg))
+}
+
+function test(...args) {
+  let runTests = require("@codemirror/buildhelper/src/runtests")
+  let {tests, browserTests} = runTests.gatherTests(buildPackages.map(p => p.dir))
+  let browsers = [], grep, noBrowser = false
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] == "--firefox") browsers.push("firefox")
+    if (args[i] == "--chrome") browser.push("chrome")
+    if (args[i] == "--no-browser") noBrowser = true
+    if (args[i] == "--grep") grep = args[++i]
+  }
+  if (!browsers.length && !noBrowser) browsers.push("chrome")
+  runTests.runTests({tests, browserTests, browsers, grep}).then(failed => process.exit(failed ? 1 : 0))
 }
 
 start()
