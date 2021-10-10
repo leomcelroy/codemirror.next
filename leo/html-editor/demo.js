@@ -31,7 +31,6 @@ const setup = [
     highlightSpecialChars(),
     history(),
     foldGutter(),
-    // foldCode(),
     drawSelection(),
     EditorState.allowMultipleSelections.of(true),
     indentOnInput(),
@@ -65,7 +64,6 @@ class CodeMirror extends HTMLElement {
         this.foldRange = foldRange(this.view);
     }
 }
+
 window.customElements.define("code-mirror", CodeMirror);
-// window.addEventListener("load", () => {
-// 	window.customElements.define("code-mirror", CodeMirror);
-// })
+
