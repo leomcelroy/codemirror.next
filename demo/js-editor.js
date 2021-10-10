@@ -1,5 +1,4 @@
 import { indentMore, indentLess } from "@codemirror/commands";
-// import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
 import { EditorView, keymap, highlightSpecialChars, drawSelection, highlightActiveLine } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
@@ -31,7 +30,6 @@ const setup = [
     highlightSpecialChars(),
     history(),
     foldGutter(),
-    foldCode(),
     drawSelection(),
     EditorState.allowMultipleSelections.of(true),
     indentOnInput(),
@@ -65,7 +63,6 @@ class CodeMirror extends HTMLElement {
         this.foldRange = foldRange(this.view);
     }
 }
+
 window.customElements.define("code-mirror", CodeMirror);
-// window.addEventListener("load", () => {
-// 	window.customElements.define("code-mirror", CodeMirror);
-// })
+
